@@ -65,6 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (document.querySelector(".cases-hero")) {
             VANTA.NET(Object.assign({ el: ".cases-hero" }, vantaConfig));
         }
+        if (document.querySelector(".contact-hero")) {
+            VANTA.NET(Object.assign({ el: ".contact-hero" }, vantaConfig));
+        }
     }
 
     // 2. Vanilla Tilt 3D Effects
@@ -103,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
         gsap.registerPlugin(ScrollTrigger);
 
         // Remove old reveal active class logic to use GSAP
-        document.querySelectorAll('.reveal').forEach(el => {
+        document.querySelectorAll('.reveal, .fade-in').forEach(el => {
             el.style.opacity = '1';
             el.style.transform = 'none';
         });
@@ -223,6 +226,43 @@ document.addEventListener('DOMContentLoaded', () => {
                 opacity: 0,
                 duration: 0.8,
                 ease: "power3.out"
+            });
+        }
+
+        // Contact Hero Animation
+        if (document.querySelector(".contact-hero h1")) {
+            gsap.from(".contact-hero h1, .contact-hero p", {
+                y: 50,
+                opacity: 0,
+                duration: 1,
+                stagger: 0.2,
+                ease: "power3.out",
+                delay: 0.2
+            });
+        }
+
+        // Contact Section Animation
+        if (document.querySelector(".contact-sec")) {
+            gsap.from(".contact-info-panel", {
+                scrollTrigger: {
+                    trigger: ".contact-sec",
+                    start: "top 80%",
+                },
+                x: -50,
+                opacity: 0,
+                duration: 0.8,
+                ease: "power3.out"
+            });
+            gsap.from(".contact-form-panel", {
+                scrollTrigger: {
+                    trigger: ".contact-sec",
+                    start: "top 80%",
+                },
+                x: 50,
+                opacity: 0,
+                duration: 0.8,
+                ease: "power3.out",
+                delay: 0.2
             });
         }
     }
